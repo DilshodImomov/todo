@@ -12,9 +12,7 @@ const Tasks = ({taskArray, setTaskArray, filter}) => {
                         <Task task={task} taskArray={taskArray} setTaskArray={setTaskArray} key={i}/>
                     );
                 }
-                else {
-                    return <></>;
-                }
+                    return null;
             }) }
         </div>
     );

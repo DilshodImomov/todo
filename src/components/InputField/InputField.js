@@ -9,7 +9,6 @@ const InputField = ({taskArray, setTaskArray, setFilter}) => {
             return;
         }
         const task = {
-            "date": new Date(),
             "task": InputField,
             "completed": 0
         };

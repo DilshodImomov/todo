@@ -1,3 +1,6 @@
 .wrapper {
     display: flex;
 }
+.modal {
+    border: 1px solid black;
+}

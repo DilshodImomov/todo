@@ -1,17 +1,19 @@
+import { useRef, useState } from "react";
 import "./Task.css";
+import Popup from "reactjs-popup";
+
 const Task = ({task, taskArray, setTaskArray}) => {
+    const pTag = useRef();
+    const [editValue, setEditValue] = useState(task.task);
 
     const clicked = (e) => {
         task.completed = 1 - task.completed;
-        let target = e.target;
-        if ( target.firstElementChild !== null ) {
-            target = target.firstElementChild;
-        }
+        console.log(pTag);
         if ( task.completed === 1 ) {
-            target.style.textDecoration = "line-through";
+            pTag.current.style.textDecoration = "line-through";
         }
         else {
-            target.style.textDecoration = "";
+            pTag.current.style.textDecoration = "";
 
         }
         console.log(e);
@@ -25,12 +27,37 @@ const Task = ({task, taskArray, setTaskArray}) => {
         strikeStyle = "line-through";
     }
 
+    const editTaskState = (event) => {
+        console.log(event);
+        setEditValue(event.target.value);
+        console.log(editValue);
+    }
+
+    const changeTask = () => {
+        if ( editValue !== "" && editValue.length <= 80 ) {
+            task.task = editValue;
+            pTag.current.textContent = editValue;
+        }
+    }
+ 
     return (
         <div className="wrapper">
             <div onClick={clicked}>
-                <p style={{textDecoration:strikeStyle}} >{task.task}</p>
+                <p ref={pTag} style={{textDecoration:strikeStyle}} >{task.task}</p>
             </div>
-            <button onClick={deleteTask}>Delete</button>
+            {/* <button onClick={editTask}>Edit</button> */}
+            <Popup trigger={<button>Edit</button>}
+                    modal
+                    >
+                {close => (
+                    <div className="modal">
+                        <button className="close" onClick={close}>&times;</button>
+                        <input type="text" defaultValue={task.task} onChange={editTaskState}/>
+                        <button onClick={deleteTask}>Delete</button>
+                        <button onClick={changeTask}>Change</button>
+                    </div>
+                )}
+            </Popup>
         </div>
     );
 }

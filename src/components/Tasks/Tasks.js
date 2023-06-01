@@ -1,6 +1,9 @@
 import Task from "../Task/Task";
 
 const Tasks = ({taskArray, setTaskArray, filter}) => {
+    const saveToStorage = () => {
+        localStorage.setItem("taskArray", JSON.stringify(taskArray));
+    }
     return (
         <div>
             { taskArray.map((task, i) => {
@@ -14,6 +17,7 @@ const Tasks = ({taskArray, setTaskArray, filter}) => {
                 }
                     return null;
             }) }
+            <button onClick={saveToStorage}>Save to Local Storage</button>
         </div>
     );
 }

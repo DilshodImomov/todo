@@ -1,0 +1,18 @@
+body {
+    /* background: linear-gradient(to top right, #E6E8E6 , #E6E8E6) fixed; */
+    background-color: #373F51;
+}
+.container {
+    width: 500px;
+    height: 600px;
+    margin: auto;
+    margin-top: 10vh;
+    background-color: #FCF7F8;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: rgb(40, 39, 39) 0px 0px 20px;
+    /* overflow: hidden; */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    }

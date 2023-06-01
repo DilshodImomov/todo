@@ -1,6 +1,81 @@
+*{
+    -webkit-box-sizing: border-box; 
+    -moz-box-sizing: border-box;    
+    box-sizing: border-box;      
+   }
 .wrapper {
     display: flex;
+    padding: 0px 10px;
+    align-items: center;
 }
 .modal {
-    border: 1px solid black;
+    height: 150px;
+    width: 500px;
+    background-color: #FCF7F8;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.modal input {
+    width: 100%;
+    font-size: 1rem;
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    outline: none;
+}
+
+.close {
+    float: right;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    margin: 0px 20px;
+}
+
+.buttons button {
+    background-color: #1098F7;
+    border: none;
+    color: #FCF7F8;
+    font-weight: 600;
+    height: 2rem;
+    font-size: 1em;
+    margin: 10px 0px;
+    padding: 0px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.popup-overlay {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.menuImg {
+    height: 30px;
+    width: auto;
+    opacity: .5;
+}
+.menuImg:hover {
+    cursor: pointer;
+}
+
+.taskBlock {
+    /* width: calc(100% - 30px); */
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.taskBlock:hover {
+    cursor: pointer;
+}
+.taskRow:hover {
+    background-color: #ede9ea;
+}
+
+input[type="checkbox"] {
+    margin-right: 15px;
+    transform: scale(1.5);
+    cursor: pointer;
 }

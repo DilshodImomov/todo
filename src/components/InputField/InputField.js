@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
+import "./InputField.css"
 
-const InputField = ({taskArray, setTaskArray, setFilter}) => {
+const InputField = ({taskArray, setTaskArray, setFilter, filter}) => {
     const [InputField, setInputField] = useState("");
     const input = useRef();
 
@@ -17,24 +18,33 @@ const InputField = ({taskArray, setTaskArray, setFilter}) => {
         console.log(taskArray);
     };
 
-    const sortTasks = (event) => {
-        setFilter(event.target.value);
+    const saveToStorage = () => {
+        localStorage.setItem("taskArray", JSON.stringify(taskArray));
     }
 
     return (
         <div>
-            <input ref={input} type="text" onChange={(event) => {
+            <input className="task-input" placeholder="Add a new task" ref={input} type="text" onChange={(event) => {
                 setInputField(event.target.value);
             }} onKeyDown={ (event) => {
                 if ( event.key === "Enter" ) {
                     Submit();
                 }
             } }/>
-            <select onChange={sortTasks}>
-                <option value="default">Default</option>
-                <option value="completed">Completed</option>
-                <option value="incomplete">Incomplete</option>
-            </select>
+            <div className="links">
+                <p
+                onClick={() => {setFilter("default");}}
+                className={`${filter==="default"?"active":""}`}>All</p>
+                <p 
+                onClick={() => {setFilter("incomplete");}}
+                className={`${filter==="incomplete"?"active":""}`}>Incomplete</p>
+                <p 
+                onClick={() => {setFilter("completed");}}
+                className={`${filter==="completed"?"active":""}`}>Completed</p>
+                <button onClick={saveToStorage}>Save</button>
+            </div>
+            <hr />
+
         </div>
     );
 }

@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import "./Task.css";
 import Popup from "reactjs-popup";
 import menuImg from "./menu.png";
+import Tasks from "../Tasks/Tasks";
 
 const Task = ({task, taskArray, setTaskArray}) => {
     const pTag = useRef();
@@ -46,7 +47,7 @@ const Task = ({task, taskArray, setTaskArray}) => {
     return (
         <div className="taskRow">
             <div className="wrapper">
-                    <input ref={checkbox} type="checkbox" defaultChecked={task.completed} onClick={clicked}/>
+                <input ref={checkbox} type="checkbox" defaultChecked={task.completed} onClick={clicked} key={Math.random()}/>
                 <div className="taskBlock" onClick={clicked}>
                     <p ref={pTag} style={{textDecoration:strikeStyle}} >{task.task}</p>
                 </div>
@@ -59,7 +60,10 @@ const Task = ({task, taskArray, setTaskArray}) => {
                             <button className="close" onClick={close}>&times;</button>
                             <input type="text" defaultValue={task.task} onChange={editTaskState}/>
                             <div className="buttons">
-                                <button onClick={deleteTask}>Delete</button>
+                                <button onClick={() => {
+                                    close();
+                                    deleteTask();
+                                }}>Delete</button>
                                 <button onClick={changeTask}>Change</button>
                             </div>
                         </div>

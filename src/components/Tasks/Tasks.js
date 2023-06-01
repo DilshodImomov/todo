@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Task from "../Task/Task";
 import "./Tasks.css";
 
@@ -5,6 +6,7 @@ const Tasks = ({taskArray, setTaskArray, filter}) => {
 
     return (
         <div className="taskContainer">
+            {console.log("refreshed")}
             { taskArray.map((task, i) => {
                 if ( (filter === "completed" && task.completed === 1) ||
                     (filter === "incomplete" && task.completed === 0) ||

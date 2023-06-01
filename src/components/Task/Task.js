@@ -64,7 +64,10 @@ const Task = ({task, taskArray, setTaskArray}) => {
                                     close();
                                     deleteTask();
                                 }}>Delete</button>
-                                <button onClick={changeTask}>Change</button>
+                                <button onClick={() => {
+                                    changeTask();
+                                    close();
+                                }}>Change</button>
                             </div>
                         </div>
                     )}

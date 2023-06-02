@@ -2,7 +2,6 @@ import { useRef, useState } from "react";
 import "./Task.css";
 import Popup from "reactjs-popup";
 import menuImg from "./menu.png";
-import Tasks from "../Tasks/Tasks";
 
 const Task = ({task, taskArray, setTaskArray}) => {
     const pTag = useRef();
@@ -11,7 +10,6 @@ const Task = ({task, taskArray, setTaskArray}) => {
 
     const clicked = (e) => {
         task.completed = 1 - task.completed;
-        console.log(task);
         if ( task.completed === 1 ) {
             pTag.current.style.textDecoration = "line-through";
             checkbox.current.checked = "true";
@@ -19,7 +17,6 @@ const Task = ({task, taskArray, setTaskArray}) => {
         else {
             pTag.current.style.textDecoration = "";
             checkbox.current.checked = "";
-            console.log(checkbox);
         }
     }
 
@@ -32,9 +29,7 @@ const Task = ({task, taskArray, setTaskArray}) => {
     }
 
     const editTaskState = (event) => {
-        console.log(event);
         setEditValue(event.target.value);
-        console.log(editValue);
     }
 
     const changeTask = () => {

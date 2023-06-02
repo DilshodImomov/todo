@@ -3,10 +3,16 @@ import "./InputField.css"
 
 const InputField = ({taskArray, setTaskArray, setFilter, filter}) => {
     const [InputField, setInputField] = useState("");
+    const [error, setError] = useState("");
     const input = useRef();
 
     const Submit = () => {
-        if ( InputField === "" || InputField.length > 80 ) {
+        if ( InputField === "" ) {
+            setError("* Task cannot be empty!");
+            return;
+        }
+        if ( InputField.length > 50 ) {
+            setError("* Task cannot exceed 50 characters!");
             return;
         }
         const task = {
@@ -15,6 +21,8 @@ const InputField = ({taskArray, setTaskArray, setFilter, filter}) => {
         };
         setTaskArray( (tasks) => [...tasks, task] );
         input.current.value = "";
+        setInputField("");
+        setError("");
         console.log(taskArray);
     };
 
@@ -31,6 +39,7 @@ const InputField = ({taskArray, setTaskArray, setFilter, filter}) => {
                     Submit();
                 }
             } }/>
+            <p className="error">{error}</p>
             <div className="links">
                 <p
                 onClick={() => {setFilter("default");}}

@@ -16,12 +16,18 @@
     border-radius: 10px;
 }
 
+.error {
+    margin-top: 5px;
+    margin-left: 5px;
+    font-size: .9rem;
+}
+
 .modal input {
     width: 100%;
     font-size: 1rem;
     padding: 5px;
     margin-top: 10px;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
     outline: none;
 }
 
@@ -42,7 +48,7 @@
     font-weight: 600;
     height: 2rem;
     font-size: 1em;
-    margin: 10px 0px;
+    /* margin: 10px 0px; */
     padding: 0px 30px;
     border-radius: 10px;
     cursor: pointer;

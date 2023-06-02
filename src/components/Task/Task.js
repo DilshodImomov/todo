@@ -7,6 +7,7 @@ const Task = ({task, taskArray, setTaskArray}) => {
     const pTag = useRef();
     const checkbox = useRef();
     const [editValue, setEditValue] = useState(task.task);
+    const [error, setError] = useState("");
 
     const clicked = (e) => {
         task.completed = 1 - task.completed;
@@ -32,10 +33,18 @@ const Task = ({task, taskArray, setTaskArray}) => {
         setEditValue(event.target.value);
     }
 
-    const changeTask = () => {
-        if ( editValue !== "" && editValue.length <= 80 ) {
+    const changeTask = (close) => {
+        if ( editValue === "" ) {
+            setError("* Task cannot be empty!");
+        }
+        else if ( editValue.length > 50 ) {
+            setError("* Task cannot exceed 50 characters!");
+        }
+        else {
+            setError("");
             task.task = editValue;
             pTag.current.textContent = editValue;
+            close();
         }
     }
  
@@ -54,14 +63,14 @@ const Task = ({task, taskArray, setTaskArray}) => {
                         <div className="modal">
                             <button className="close" onClick={close}>&times;</button>
                             <input type="text" defaultValue={task.task} onChange={editTaskState}/>
+                            <p className="error">{error}</p>
                             <div className="buttons">
                                 <button onClick={() => {
-                                    close();
                                     deleteTask();
+                                    close()
                                 }}>Delete</button>
                                 <button onClick={() => {
-                                    changeTask();
-                                    close();
+                                    changeTask(close);
                                 }}>Change</button>
                             </div>
                         </div>

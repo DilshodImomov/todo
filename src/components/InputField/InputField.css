@@ -41,3 +41,8 @@
     cursor: pointer;
     background-color: #33a3f3;
 }
+
+.error {
+    color: red;
+    font-size: .9rem;
+}
